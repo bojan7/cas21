@@ -20,8 +20,16 @@ case "prikazunosavozila":
 $controller->prikazUnosaVozila();
 break;
 
+case "prikazunosavozaca":
+$controller->prikazUnosaVozaca();
+break;
+
 case "Unesite vozilo":
 $controller->unosVozila();
+break;
+
+case "Unos Vozaca":
+$controller->unosVozaca();
 break;
 
 

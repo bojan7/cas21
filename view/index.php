@@ -9,13 +9,13 @@
 <body>
 
 <?php
-var_dump($_SESSION['ulogovan']);
+//var_dump($_SESSION['ulogovan']);
     ?>
     <h1>Dobro dosli</h1>
 
     <a href="rute.php?akcija=prikazunosavozila">Unos vozila</a>
     <br><br>
-    <a href="">Unos vozaca</a>
+    <a href="rute.php?akcija=prikazunosavozaca">Unos vozaca</a>
     <br><br>
     <a href="rute.php?akcija=zaduzenje">Zaduzenje vozila</a>
     <br><br>

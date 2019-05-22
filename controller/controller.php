@@ -82,6 +82,69 @@ include 'unosvozila.php';
 
 }
 
+public function prikazUnosaVozaca(){
+
+  include 'unosvozaca.php';
+}
+
+public function unosVozaca(){
+
+  $ime = isset($_GET['ime'])?$_GET['ime']:"";
+  $prezime = isset($_GET['prezime'])?$_GET['prezime']:"";
+  $godiste = isset($_GET['godiste'])?$_GET['godiste']:"";
+
+  $errors = array();
+
+  if(empty($ime)){
+      $errors ['ime'] = "Niste uneli ime.";
+  }   else {
+      if(is_numeric($ime)){
+          $errors ['ime'] = "Ime ne moze da bude numericka vrednost.";
+      }
+  }
+
+  if(empty($prezime)){
+      $errors ['prezime'] = "Niste uneli prezime.";
+  }   else {
+      if(is_numeric($prezime)){
+          $errors ['prezime'] = "Prezime ne moze da bude numericka vrednost.";
+      }
+  }
+
+  if(empty($godiste)){
+      $errors['godiste'] = "Morate uneti godiste.";
+
+  }   else {
+      if(is_numeric($godiste)){
+          if($godiste <=1950 || $godiste >2019){
+              $errors['godiste'] = "Godiste ne sme biti veca od 2019 i manje od 1950.";
+          }
+      }   else{
+          $errors ['godiste'] = "Godiste mora biti numericka vrednost.";
+      }
+  }
+
+  if(count($errors) == 0){
+
+      $dao = new DAO();
+
+      $status = $dao->unosVozaca($ime, $prezime, $godiste);
+      $status->lastInsertId();
+      
+      foreach ($_GET['vozila'] as $vozilo) {
+          $dao->dodelaVozilaVozacu($idUnetogVozaca, $vozilo);
+      }
+
+      $msg = "Uspesan unos!";
+      include 'unosvozaca.php';
+
+  }   else    {
+      $msg = "Molimo vas popunite sva polja korektno.";
+      include 'unosvozaca.php';
+  }
+
+}
+
 
 public function prikazVozila(){
   $dao=new DAO();

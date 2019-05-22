@@ -10,6 +10,7 @@ class DAO{
   private $UNOSVOZILA="INSERT INTO vozila (imeproizvodjaca,model,kategorija,godiste,cena) VALUES(?,?,?,?,?)";
   private $PRIKAZVOZILA="SELECT * FROM vozila";
   private $PRIKAZVOZACA="SELECT * FROM vozaci";
+  private $UNOSVOZACA = "INSERT INTO vozaci (ime, prezime, godiste) VALUES (?,?,?)";
 
   private $ZADUZENJE="INSERT INTO vozilavozaci(idvozila,idvozaca) VALUES(?,?)";
   private $OBRISIVOZACA="DELETE FROM vozaci WHERE idvozaca=?";
@@ -80,6 +81,14 @@ public function zaduzenje( $idvozila,$idvozaca){
     $statement->bindValue(2,$idvozaca);
     $statement->execute();
 
+}
+
+public function unosVozaca($i,$p,$g){
+    $statement = $this->db->prepare($this->UNOSVOZACA);
+        $statement->bindValue(1,$i);
+        $statement->bindValue(2,$p);
+        $statement->bindValue(3,$g);
+   return $statement->execute();
 }
 
 public function obrisiVozaca($id){
