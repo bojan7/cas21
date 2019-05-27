@@ -42,8 +42,8 @@ $errors = isset($errors)?$errors:array();
     <br><br>
 
     <label>Izaberite vozilo</label><br>
-
-        <select multiple name="vozilo">
+        
+        <select multiple name="vozila[]">
         <option value=""></option>
         
         <?php

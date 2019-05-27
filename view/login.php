@@ -8,9 +8,12 @@
 </head>
 <body>
     <form action="rute.php" method="post">
+
+    <label>Unesite Ime</label><br>
     <input type="text" name="username" placeholder="Username">
     <br>
     <br>
+    <label>Unesite Password</label><br>
     <input type="password" name="password" placeholder="Password">
     <br>
     <br>

@@ -7,7 +7,13 @@
     <title>Izmena vozila</title>
 </head>
 <body>
-    
+<a href="index.php">Nazad</a>
+<?php
+session_start();
+///var_dump($_SESSION['ulogovan']);
+//zastita da korisnika preusmerimo na login ako pokusa da pristupi strani direktno a nije se ulogova prethodno
+ if(isset($_SESSION['ulogovan'])){
+?>
 <?php
 require_once '../model/DAO.php';
 $dao = new DAO();
@@ -86,7 +92,11 @@ foreach ($svekategorije as $kat){
 
 </form>
 
-
+<?php
+ }else{
+     header("Location:login.php");
+ }
+    ?>
 
 
 

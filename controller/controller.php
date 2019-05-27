@@ -128,12 +128,14 @@ public function unosVozaca(){
 
       $dao = new DAO();
 
-      $status = $dao->unosVozaca($ime, $prezime, $godiste);
-      $status->lastInsertId();
+      $dao->unosVozaca($ime, $prezime, $godiste);
+      $idUnetogVozaca = $dao->lastInsertId();
       
-      foreach ($_GET['vozila'] as $vozilo) {
-          $dao->dodelaVozilaVozacu($idUnetogVozaca, $vozilo);
-      }
+      if(isset($_GET['vozila'])){
+        foreach ($_GET['vozila'] as $vozilo) {
+            $dao->zaduzenje($vozilo, $idUnetogVozaca);
+        }
+    }
 
       $msg = "Uspesan unos!";
       include 'unosvozaca.php';
@@ -329,7 +331,12 @@ include 'index.php';
 
 
 }
-
+public function logout(){
+  session_start();
+  session_unset();
+  session_destroy();
+  header("Location:login.php");
+  }
 
 
 

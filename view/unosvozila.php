@@ -7,6 +7,12 @@
     <title>Unos vozila</title>
 </head>
 <body>
+<?php
+session_start();
+///var_dump($_SESSION['ulogovan']);
+//zastita da korisnika preusmerimo na login ako pokusa da pristupi strani direktno a nije se ulogova prethodno
+ if(isset($_SESSION['ulogovan'])){
+?>
 <h2>Unos vozila</h2>
 
 <?php
@@ -70,6 +76,11 @@ echo "<option value='$kat[kategorija]'>$kat[kategorija]</option>";
 <input type="submit" name="akcija" value="Unesite vozilo">
 
 </form>
+<?php
+   }else{
+     header("Location:login.php");
+   }
+    ?>
     
 </body>
 </html>

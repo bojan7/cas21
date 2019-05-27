@@ -6,7 +6,7 @@ require_once('../controller/controller.php');
 
 $controller=new Controller();
 
-$akcija=isset($_GET['akcija'])?$_GET['akcija']:"";
+$akcija=isset($_GET['akcija'])?$_GET['akcija']:"login.php";
 
 $akcija2=isset($_POST['akcija'])?$_POST['akcija']:"";
 
@@ -61,6 +61,10 @@ break;
 
 case "Izmenite vozilo":
 $controller->izmenaVozila();
+break;
+
+case "logout":
+$controller->logout();
 break;
 }
 

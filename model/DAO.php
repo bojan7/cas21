@@ -133,6 +133,10 @@ public function login( $u,$p){
 
 }
 
+public function lastInsertId(){
+    return $this->db->lastInsertId();
+}
+
 }
 
 
