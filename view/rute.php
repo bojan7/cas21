@@ -4,78 +4,72 @@ require_once('../controller/controller.php');
 // fajl sa rutama mora biti povezan sa kontrolerom
 // u ovom fajlu proveravamo sve zahtebe korisnika i za svaki zahtev upucujemo na odredjenu metodu u kontroleru
 
-$controller=new Controller();
+$controller = new Controller();
 
-$akcija=isset($_GET['akcija'])?$_GET['akcija']:"login.php";
+$akcija = isset($_GET['akcija']) ? $_GET['akcija'] : "login.php";
 
-$akcija2=isset($_POST['akcija'])?$_POST['akcija']:"";
+$akcija2 = isset($_POST['akcija']) ? $_POST['akcija'] : "";
 
+switch ($akcija) {
 
+    case "prikazunosavozila":
+        // preko objekta controller pozivamo metodu iz klase kontroler na izvrsenje
+        $controller->prikazUnosaVozila();
+        break;
 
+    case "prikazunosavozaca":
+        $controller->prikazUnosaVozaca();
+        break;
 
-switch($akcija){
+    case "Unesite vozilo":
+        $controller->unosVozila();
+        break;
 
-case "prikazunosavozila":
-// preko objekta controller pozivamo metodu iz klase kontroler na izvrsenje
-$controller->prikazUnosaVozila();
-break;
-
-case "prikazunosavozaca":
-$controller->prikazUnosaVozaca();
-break;
-
-case "Unesite vozilo":
-$controller->unosVozila();
-break;
-
-case "Unos Vozaca":
-$controller->unosVozaca();
-break;
+    case "Unos Vozaca":
+        $controller->unosVozaca();
+        break;
 
 
-case "prikazvozila":
-$controller->prikazVozila();
-break;
+    case "prikazvozila":
+        $controller->prikazVozila();
+        break;
 
-//prikazvozaca
+        //prikazvozaca
 
-case "prikaz_vozaca":
-$controller->prikazVozaca();
-break;
+    case "prikaz_vozaca":
+        $controller->prikazVozaca();
+        break;
 
-case "zaduzenje":
-$controller->zaduzenjeVozila();
-break;
+    case "zaduzenje":
+        $controller->zaduzenjeVozila();
+        break;
 
-case "Dodeli":
-$controller->zaduzi();
-break;
+    case "Dodeli":
+        $controller->zaduzi();
+        break;
 
-case "obrisivozaca":
-$controller->obrisiVozaca();
-break;
+    case "obrisivozaca":
+        $controller->obrisiVozaca();
+        break;
 
-case "prikazizmenevozila":
-$controller->prikazIzmeneVozila();
-break;
+    case "prikazizmenevozila":
+        $controller->prikazIzmeneVozila();
+        break;
 
-case "Izmenite vozilo":
-$controller->izmenaVozila();
-break;
+    case "Izmenite vozilo":
+        $controller->izmenaVozila();
+        break;
 
-case "logout":
-$controller->logout();
-break;
+    case "logout":
+        $controller->logout();
+        break;
 }
 
 
 
-switch($akcija2){
+switch ($akcija2) {
 
     case "Log in":
-    $controller->login();
-    break;
-
+        $controller->login();
+        break;
 }
-
-?>
